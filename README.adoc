@@ -9,7 +9,7 @@ be used in Bookbag environments.
 == Creating (converting) Lab Content
 
 . Create a new repository using this one as a template (replace `mylab-bookbag` with your project name):
-.. `$ git clone https://gitlab.com/2020-summit-labs/bookbag-template.git`
+.. `$ git clone --depth 1 https://gitlab.com/2020-summit-labs/bookbag-template.git`
 .. `$ mv bookbag-template/ mylab-bookbag`
 .. `$ cd mylab-bookbag`
 .. `$ git push --set-upstream https://gitlab.com/2020-summit-labs/mylab-bookbag.git master`
@@ -97,6 +97,17 @@ bookbag-004   bookbag-004-bookbag-test.apps.cluster-xxxx.xxxx.dev.open.redhat.co
 ----
 
 . Use this Route hostname to open the Bookbag page in your browser.
+
+=== Customizing Bookbag's Layout
+
+. By default Bookbag creates three frames: Lab instructions on the left and two terminal windows on the right.
+With this layout, for example, you can run a command in one terminal session and see its logs in the other.
+If you want to change the number of terminal windows, change the `TERMINAL_TAB` environment variable in the
+`terminal` container to the following:
++
+* `split` for a 2-window layout
+* `split/2` for a 3-window layout
+* ` ` (empty) for a 1-window layout
 
 
 == Customizing Lab Instructions for Bookbag
