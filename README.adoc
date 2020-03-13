@@ -17,10 +17,10 @@ be used in Bookbag environments.
 == Creating (converting) Lab Content
 
 . Create a new repository using this one as a template (replace `mylab-bookbag` with your project name):
-.. `$ git clone --depth 1 https://gitlab.com/2020-summit-labs/bookbag-template.git`
-.. `$ mv bookbag-template/ mylab-bookbag`
+.. `$ git clone --depth 1 https://gitlab.com/2020-summit-labs/bookbag-template.git mylab-bookbag`
 .. `$ cd mylab-bookbag`
-.. `$ git push --set-upstream https://gitlab.com/2020-summit-labs/mylab-bookbag.git master`
+.. `$ git remote set-url origin git@gitlab.com:2020-summit-labs/mylab-bookbag.git`
+.. `$ git push -u origin --all`
 
 . Define which modules you want to include in your lab.
 
