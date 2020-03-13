@@ -117,6 +117,18 @@ If you want to change the number of terminal windows, change the `TERMINAL_TAB` 
 * `split/2` for a 3-window layout
 * ` ` (empty) for a 1-window layout
 
+. If you don't need the *Console* tab, set the environment variable `CONSOLE_URL` to an empty value.
+
+. If you don't need the terminal windows at all, use the modified Dockerfile called `Dockerfile-no-term` 
+to build the image. It copies the modified file `dashboard-no-term.pug` into the Bookbag container image 
+and replace the original one. Use the following command to build the image:
++
+----
+$ docker build -f Dockerfile-no-term .
+----
++
+After that use the image as described above.
+
 
 == Customizing Lab Instructions for Bookbag
 
