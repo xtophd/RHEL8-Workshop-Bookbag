@@ -136,6 +136,27 @@ html
               }
             });
 
+            var terminal_session_counter = 100;
+
+            function generate_terminal_session_id() {
+                return terminal_session_counter++;
+            }
+
+            function send_to_terminal(value, terminal="1") {
+                $("#terminals-tab").trigger("click");
+                var name = "terminal" + terminal + "-iframe";
+                var terminal_iframe = document.getElementById(name);
+                terminal_iframe.contentWindow.butterfly.focus();
+                terminal_iframe.contentWindow.butterfly.nativeScrollTo();
+                if (value.toLowerCase() == '<ctrl-c>' ||
+                        value.toLowerCase() == '<ctrl+c>') {
+                    value = String.fromCharCode(0x03);
+                    terminal_iframe.contentWindow.butterfly.send(value);
+                }
+                else {
+                    terminal_iframe.contentWindow.butterfly.send(value + '\n');
+                }
+            }
 
             function reload_workshop() {
                 var workshop_iframe = $("#workshop-iframe");
@@ -143,6 +164,24 @@ html
                 if (workshop_iframe) {
                     workshop_iframe.attr('src',
                       workshop_iframe.contents().get(0).location.href);
+                }
+            }
+
+            function reload_terminal() {
+                $("#terminals-tab").trigger("click");
+
+                var terminal1_iframe = $("#terminal1-iframe");
+                var terminal2_iframe = $("#terminal2-iframe");
+                var terminal3_iframe = $("#terminal3-iframe");
+
+                if (terminal1_iframe) {
+                    terminal1_iframe.attr('src', terminal1_iframe.attr('src'));
+                }
+                if (terminal2_iframe) {
+                    terminal2_iframe.attr('src', terminal2_iframe.attr('src'));
+                }
+                if (terminal3_iframe) {
+                    terminal3_iframe.attr('src', terminal3_iframe.attr('src'));
                 }
             }
 
@@ -167,6 +206,12 @@ html
                 $("#slides-tab").trigger("click");
             }
 
+            function bring_terminal_to_front() {
+                $("#terminals-tab").trigger("click");
+                var terminal_iframe = document.getElementById("terminal1-iframe");
+                terminal_iframe.contentWindow.butterfly.focus();
+            }
+
             function finished_workshop_dialog() {
                 $("#finished-workshop").modal();
             }
@@ -176,11 +221,13 @@ html
 
                 height = height - $("#workarea-nav").height();
 
+                $("#terminals-pane").height(height);
                 $("#console-pane").height(height);
                 $("#slides-pane").height(height);
 
                 var width = $("#workarea-div").width();
 
+                $("#terminals-pane").width(width);
                 $("#console-pane").width(width);
                 $("#slides-pane").width(width);
             }
@@ -188,11 +235,23 @@ html
             $(window).on('load', function() {
                 adjust_split_panes();
 
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    var target = $(e.target).attr('href')
+                    if (target == '#terminals-pane') {
+                        $('#terminal1-iframe')[0].contentWindow.butterfly.nativeScrollTo();
+                        if ($('#terminal2-iframe')[0]) {
+                            $('#terminal2-iframe')[0].contentWindow.butterfly.nativeScrollTo();
+                        }
+                        if ($('#terminal3-iframe')[0]) {
+                            $('#terminal3-iframe')[0].contentWindow.butterfly.nativeScrollTo();
+                        }
+                    }
+                });
+
                 var dashboard_url = $(location).attr("href");
                 $('#workshop-link').append(dashboard_url);
 
                 $("#cover").hide();
-                $("#console-tab").click();
             });
 
     body(onresize="adjust_split_panes()")
@@ -267,6 +326,10 @@ html
 
         div.split.split-horizontal.pane-content#workarea-div
             ul.nav.nav-pills.mb-1#workarea-nav(role="tablist")
+                if terminal_tab != 'disable'
+                    li.nav-item
+                        a.nav-link.active#terminals-tab(data-toggle="tab" href="#terminals-pane" role="tab" aria-controls="terminals-pane" aria-selected=true) Terminal
+
                 if console_url
                     li.nav-item
                         a.nav-link#console-tab(data-toggle="tab" href="#console-pane" role="tab" aria-controls="console-pane" aria-selected=false) Console
@@ -287,6 +350,9 @@ html
 
                             li.dropdown-item
                                 a(role="menuitem" onclick=`reload_workshop();`) Reload Workshop
+                            if terminal_tab != 'disable'
+                                li.dropdown-item
+                                    a(role="menuitem" onclick=`reload_terminal();`) Reload Terminal
                             if console_url
                                 li.dropdown-item
                                     a(role="menuitem" onclick=`reload_console();`) Reload Console
@@ -295,6 +361,9 @@ html
 
                             li.dropdown-item
                                 a(role="menuitem" onclick=`window.open("../workshop");`) Open Workshop
+                            if terminal_tab != 'disable'
+                                li.dropdown-item
+                                    a(role="menuitem" onclick=`window.open("../terminal/session/"+generate_terminal_session_id());`) Open Terminal
                             if console_url
                                 li.dropdown-item
                                     a(role="menuitem" onclick=`window.open("../console");`) Open Console
@@ -306,14 +375,27 @@ html
                                 li.dropdown-item
                                     a(role="menuitem", data-toggle="modal", data-target="#restart-confirmation") Restart Session
 
-            div.tab-content
-                if console_url
-                    div.tab-pane.fade.show.iframe-div#console-pane(role="tabpanel" aria-labelledby="console-tab")
-                        iframe#console-iframe(src="../console")
+            if terminal_tab != 'disable'
+                div.tab-content
+                    div.tab-pane.fade.show.active#terminals-pane(role="tabpanel" aria-labelledby="terminals-tab")
+                        div.split.iframe-div#terminal1-div
+                            iframe#terminal1-iframe(src="../terminal/session/1")
+                        if terminal_tab == 'split'
+                            div.split.iframe-div#terminal2-div
+                                iframe#terminal2-iframe(src="../terminal/session/2")
+                        if terminal_tab == 'split/2'
+                            div.split.iframe-div#terminal2-div
+                                iframe#terminal2-iframe(src="../terminal/session/2")
+                            div.split.iframe-div#terminal3-div
+                                iframe#terminal3-iframe(src="../terminal/session/3")
 
-                if with_slides
-                    div.tab-pane.fade.show.iframe-div#slides-pane(role="tabpanel" aria-labelledby="slides-tab")
-                        iframe#slides-iframe(src="../slides/index.html")
+                    if console_url
+                        div.tab-pane.fade.show.iframe-div#console-pane(role="tabpanel" aria-labelledby="console-tab")
+                            iframe#console-iframe(src="../console")
+
+                    if with_slides
+                        div.tab-pane.fade.show.iframe-div#slides-pane(role="tabpanel" aria-labelledby="slides-tab")
+                            iframe#slides-iframe(src="../slides/index.html")
 
         script.
             require(['split'], function(split) {
@@ -325,4 +407,46 @@ html
                         adjust_split_panes();
                     }
                 });
+            });
+
+        if terminal_tab == 'split'
+            script.
+                require(['split'], function(split) {
+                    split(['#terminal1-div', '#terminal2-div'], {
+                        gutterSize: 8,
+                        sizes: [60, 40],
+                        direction: 'vertical',
+                        onDrag: function () {
+                            adjust_split_panes();
+                        }
+                    });
+                });
+
+        if terminal_tab == 'split/2'
+            script.
+                require(['split'], function(split) {
+                    split(['#terminal1-div', '#terminal2-div', '#terminal3-div'], {
+                        gutterSize: 8,
+                        sizes: [50, 25, 25],
+                        direction: 'vertical',
+                        onDrag: function () {
+                            adjust_split_panes();
+                        }
+                    });
+                });
+
+        script.
+            $('#terminal1-iframe').on('load', function() {
+                var style = '<style>a { pointer-events: none }</style>';
+                $(this).contents().find('head').append(style);
+            });
+
+            $('#terminal2-iframe').on('load', function() {
+                var style = '<style>a { pointer-events: none }</style>';
+                $(this).contents().find('head').append(style);
+            });
+
+            $('#terminal3-iframe').on('load', function() {
+                var style = '<style>a { pointer-events: none }</style>';
+                $(this).contents().find('head').append(style);
             });
