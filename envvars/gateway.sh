@@ -5,7 +5,6 @@
 #
 #   split   - Split for two vertically stacked terminals
 #   split/2 - Split twice for three vertically stacked terminals
-#   disable - Disable terminal tab entirely
 #
 #export TERMINAL_TAB='split'
 

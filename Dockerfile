@@ -3,7 +3,6 @@ FROM quay.io/openshifthomeroom/workshop-dashboard:5.0.0
 USER root
 
 COPY . /tmp/src
-COPY dashboard.pug /opt/workshop/gateway/views/dashboard.pug
 
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
