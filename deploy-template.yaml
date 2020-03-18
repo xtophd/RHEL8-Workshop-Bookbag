@@ -21,9 +21,6 @@ parameters:
   - name: IMAGE_STREAM_NAMESPACE
   - name: IMAGE
     value: set-by-trigger
-  - name: OPENSHIFT_CONSOLE_IMAGE
-    required: true
-    value: quay.io/openshift/origin-console:4.2
   - name: WORKSHOP_VARS
     required: true
     value: '{}'
@@ -52,7 +49,6 @@ objects:
           imageChangeParams:
             automatic: true
             containerNames:
-              - setup-console
               - terminal
             from:
               kind: ImageStreamTag
@@ -66,28 +62,6 @@ objects:
         spec:
           dnsPolicy: ClusterFirst
           restartPolicy: Always
-          volumes:
-            - name: shared
-              emptyDir: {}
-          initContainers:
-            - name: setup-console
-              command:
-                - /opt/workshop/bin/setup-console.sh
-              env:
-                - name: CLUSTER_SUBDOMAIN
-                - name: OPENSHIFT_PROJECT
-                - name: OPENSHIFT_USERNAME
-                - name: OPENSHIFT_PASSWORD
-                - name: OPENSHIFT_TOKEN
-                - name: OC_VERSION
-                - name: ODO_VERSION
-                - name: KUBECTL_VERSION
-              image: ${IMAGE}
-              imagePullPolicy: IfNotPresent
-              resources: {}
-              volumeMounts:
-                - mountPath: /var/run/workshop
-                  name: shared
           containers:
             - name: terminal
               env:
@@ -113,9 +87,6 @@ objects:
                 - containerPort: 10080
                   protocol: TCP
               resources: {}
-              volumeMounts:
-                - mountPath: /var/run/workshop
-                  name: shared
 
   - apiVersion: v1
     kind: Service
