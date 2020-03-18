@@ -8,9 +8,6 @@
 #
 #export TERMINAL_TAB='split'
 
-# Enable slides content if included with lab
-#export ENABLE_SLIDES='true'
-
 # Disable OpenShift Console, this is not appropriate for Red Hat Summit as it
 # would point to the wrong cluster.
 #export CONSOLE_URL='http://0.0.0.0:10083'
@@ -18,3 +15,11 @@
 # Enable the following line to disable the right-hand pane entirely.
 # Only use this if you have no terminal, no slides, and no console.
 #export DEFAULT_PAGE='workshop'
+
+# Flags to explicitly enable/disable specific components
+#ENABLE_CONSOLE='false'
+#ENABLE_DASHBOARD='false'
+#ENABLE_SLIDES='false'
+#ENABLE_TERMINAL='false'
+#ENABLE_WEBDAV='false'
+#ENABLE_WORKSHOP='true'
