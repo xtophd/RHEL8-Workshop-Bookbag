@@ -50,7 +50,7 @@ Password: *_password_*
 +
 [source,subs="{markup-in-source}"]
 ----
-$ *oc project user-_username_-redhat.com*
+$ *oc project user-_username_-redhat-com*
 ----
 
 . Create the bookbag BuildConfig and ImageStream:
@@ -100,7 +100,7 @@ To deploy a Bookbag with lab instructions on an OpenShift cluster:
 +
 [source,subs="{markup-in-source}"]
 ----
-$ *oc project user-_username_-redhat.com*
+$ *oc project user-_username_-redhat-com*
 ----
 
 . Process the deploy template:
