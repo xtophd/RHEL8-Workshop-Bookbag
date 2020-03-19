@@ -209,7 +209,7 @@ Here are your informational messages:
 +
 [source,subs="{markup-in-source}"]
 ----
-$ *oc process -f deploy-template.yaml -p NAME="bookbag" -p IMAGE_STREAM_NAME="bookbag" -p WORKSHOP_VARS="$(cat workshop-vars.json)" | oc apply -f -*
+$ *oc process -f deploy-template.yaml -p WORKSHOP_VARS="$(cat workshop-vars.json)" | oc apply -f -*
 ----
 
 === Text formatting in preformatted parts
