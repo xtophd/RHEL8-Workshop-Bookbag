@@ -14,45 +14,45 @@ modules:
     exit_sign: Workshop Abstract
   abstract
     name: Workshop Abstract
-    exit_sign: Web Console (Cockpit)
+    exit_sign: Web Console
   webconsole
-    name: Web Console (Cockpit)
-    exit_sign: System Service Management (systemd)
+    name: Web Console
+    exit_sign: System Service Management
   systemd
-    name: System Service Management (systemd)
-    exit_sign: Firewall Rule Management (firewalld)
+    name: System Service Management
+    exit_sign: Firewall Rule Management
   firewalld
-    name: Firewall Rule Management (firewalld)
-    exit_sign: Firewall Subsystem (nftables) 
+    name: Firewall Rule Management
+    exit_sign: Firewall Subsystem
   nftables
-    name: Firewall Subsystem (nftables) 
-    exit_sign: Packet Filter (ebpf)
+    name: Firewall Subsystem
+    exit_sign: Packet Filter
   ebpf
-    name: Packet Filter (ebpf)
-    exit_sign: Application Delivery (app streams)
+    name: Packet Filter
+    exit_sign: Application Delivery
   appstream-yum
-    name:  Application Delivery (app streams)
-    exit_sign: Container Management (podman)
+    name:  Application Delivery
+    exit_sign: Container Management
   podman
-    name:  Container Management (podman)
-    exit_sign: Container Development (buildah and skopeo)
+    name:  Container Management
+    exit_sign: Container Development
   buildah
-    name:  Container Development (buildah and skopeo)
-    exit_sign: Virtualization Management (libvirt)
+    name:  Container Development
+    exit_sign: Virtualization Management
   virtualization
-    name: Virtualization Management (libvirt)
-    exit_sign: Session Logging (tlog)
+    name: Virtualization Management
+    exit_sign: Session Logging
   tlog
-    name: Session Logging (tlog)
-    exit_sign: Storage Management and Optimization (lvm and vdo)
+    name: Session Logging
+    exit_sign: Storage Management and Optimization
   lvm-vdo
-    name: Storage Management and Optimization (lvm and vdo)
-    exit_sign: Simplified Storage Management (stratis)
+    name: Storage Management and Optimization
+    exit_sign: Simplified Storage Management
   stratis
-    name: Simplified Storage Management (stratis)
-    exit_sign: Boot Management (boom)
+    name: Simplified Storage Management
+    exit_sign: Boot Management
   boom
-    name:  Boot Management (boom)
+    name:  Boot Management
     exit_sign: Ressting and Solving
   solving-resetting:
     name: Resetting and Solving
