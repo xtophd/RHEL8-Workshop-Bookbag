@@ -1,7 +1,7 @@
 :USER_GUID: %guid%
 :TARGET_IP: %rhel8lab_workstation_public_ip_address%
 :USERNAME:  cloud-user
-:PASSWORD:  temporary
+:PASSWORD:  r3dh4t1!
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
