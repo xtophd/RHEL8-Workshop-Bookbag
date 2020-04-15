@@ -7,7 +7,6 @@ modules:
     - exercises
     - cleanup
     - solving-resetting
-
     - abstract
     - webconsole
     - systemd
