@@ -1,5 +1,8 @@
 ---
 modules:
+  abstract:
+    name: Workshop Abstract
+    exit_sign: Workshop Overview
   overview:
     name: Workshop Overview
     exit_sign: Prepare Environment
