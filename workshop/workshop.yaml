@@ -1,5 +1,5 @@
 ---
-name: Bookbag Template
+name: Definitive RHEL8 Workshop
 modules:
   activate:
     - overview
