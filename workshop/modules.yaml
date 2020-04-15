@@ -5,9 +5,12 @@ modules:
     exit_sign: Prepare Environment
   prepare-environment:
     name: Prepare Environment
-    exit_sign: "System Management Web Console (cockpit)"
+    exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
-    name: "System Management Web Console (cockpit)"
+    name: "Web Console (cockpit)"
+    exit_sign: "Service Management (systemd)"
+  documentation/systemd:
+    name: "Service Management (systemd)"
     exit_sign: Cleanup
   cleanup:
     name: Cleanup

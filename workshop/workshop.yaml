@@ -4,6 +4,7 @@ modules:
   activate:
     - overview
     - documentation/webconsole
+    - documentation/systemd
     - prepare-environment
     - exercises
     - cleanup
