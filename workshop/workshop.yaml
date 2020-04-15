@@ -3,8 +3,10 @@ name: Bookbag Template
 modules:
   activate:
     - overview
+    - connection
     - documentation/webconsole
     - documentation/systemd
+    - documentation/firewalld
     - prepare-environment
     - exercises
     - cleanup

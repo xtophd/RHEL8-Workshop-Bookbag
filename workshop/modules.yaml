@@ -11,6 +11,9 @@ modules:
     exit_sign: "Service Management (systemd)"
   documentation/systemd:
     name: "Service Management (systemd)"
+    exit_sign: "Firewall Management (firewalld)"
+  documentation/firewalld:
+    name: "Firewall Management (firewalld)"
     exit_sign: Cleanup
   cleanup:
     name: Cleanup

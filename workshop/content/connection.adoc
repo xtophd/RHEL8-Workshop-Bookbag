@@ -1,0 +1,21 @@
+:USER_GUID: %GUID%
+:USERNAME: %USERNAME%
+:markup-in-source: verbatim,attributes,quotes
+:show_solution: true
+
+
+== Environment Connection
+
+=== User Information
+
+Here is your custom user information:
+
+[source,bash,options="nowrap",subs="{markup-in-source}"]
+----
+Here is some important information about your environment:
+
+Your GUID is: *{USER_GUID}*
+
+Your username is: *{USERNAME}*
+
+----
