@@ -18,7 +18,7 @@ By completing this lab you will achieve the following goals:
 
 == User Information
 
-Here is your user information:
+Here is your custom user information:
 
 [source,bash,options="nowrap",subs="{markup-in-source}"]
 ----
