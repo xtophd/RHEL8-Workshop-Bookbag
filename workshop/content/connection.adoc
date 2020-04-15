@@ -1,7 +1,7 @@
 :USER_GUID: %guid%
 :TARGET_IP: %rhel8lab_workstation_public_ip_address%
-:USERNAME:  "cloud-user"
-:PASSWORD:  "temporary"
+:USERNAME:  cloud-user
+:PASSWORD:  temporary
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
@@ -16,7 +16,7 @@ Here is your custom user information:
 ----
 Here is some important information about your environment:
 
-Your IP is: *{USER_GUID}*
+Your IP is: *{TARGET_IP}*
 
 Your username is: *{USERNAME}*
 
