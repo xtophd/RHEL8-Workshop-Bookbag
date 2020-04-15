@@ -1,5 +1,7 @@
-:USER_GUID: %GUID%
-:USERNAME: %USERNAME%
+:USER_GUID: %guid%
+:TARGET_IP: %rhel8lab_workstation_public_ip_address%
+:USERNAME:  "cloud-user"
+:PASSWORD:  "temporary"
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
@@ -14,8 +16,15 @@ Here is your custom user information:
 ----
 Here is some important information about your environment:
 
-Your GUID is: *{USER_GUID}*
+Your IP is: *{USER_GUID}*
 
 Your username is: *{USERNAME}*
 
+Your password is: *{PASSWORD}*
+
+----
+
+[source,bash,options="nowrap",subs="{markup-in-source}"]
+----
+$ *ssh {USERNAME}@{TARGET_IP}*
 ----
