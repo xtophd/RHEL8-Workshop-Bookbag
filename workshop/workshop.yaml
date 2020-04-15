@@ -3,6 +3,7 @@ name: Bookbag Template
 modules:
   activate:
     - overview
+    - abstract
     - prepare-environment
     - exercises
     - cleanup

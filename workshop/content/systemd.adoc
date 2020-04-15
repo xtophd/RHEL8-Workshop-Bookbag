@@ -1,0 +1,325 @@
+:sectnums:
+:sectnumlevels: 3
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+
+:toc:
+:toclevels: 1
+
+= Introduction to systemd
+
+Systemd is the "init" system for RHEL 8 (and 7 for that matter).  It replaces Upstart, the SysV "init" system used in prior releases of RHEL.  Systemd is more than just a facility to bring up user space, it is a system manager that offers:
+
+  * service parallelization
+  * socket and D-Bus activation
+  * on-demand starting of services
+  * track services and child processes via cgroups
+  * and much more
+
+
+== Getting Started
+
+Starting on the host *workstation.example.com*, let's ssh over to *node1.example.com*.  No password should be required.
+
+.[root@workstation]#
+----
+ssh node1.example.com
+----
+
+Verify that you are on the right host for these exercises.
+
+.[root@node1 ~]#
+----
+cheat-systemd-checkhost.sh
+----
+
+You are now ready to proceed with these exercises.
+
+== Analyzing System Startup
+
+Let's collect some initial data about the boot process
+
+.[root@node1]#
+----
+systemd-analyze
+----
+
+Your output will look something like this
+
+.Command Output
+[source,indent=4]
+----
+Startup finished in 3.783s (kernel) + 6.526s (initrd) + 14.723s (userspace) = 25.033s
+multi-user.target reached after 10.540s in userspace
+----
+
+.[root@node1]#
+----
+systemd-analyze blame
+----
+
+.Command Output
+[source,indent=4]
+----
+          4.205s kdump.service
+          3.308s firewalld.service
+          3.108s dnf-makecache.service
+          2.991s NetworkManager-wait-online.service
+          2.182s dracut-initqueue.service
+          1.562s sssd.service
+          ...<output truncated>...
+----
+
+This command prints a list of all running units, ordered by the time they took to initialize.  To streamline the boot process for something like a cloud image, this helps to learn the “cost” of some of the default services.  Unnecessary services could potentially be removed or disabled to speed boot time.
+
+
+== Core Concepts
+
+=== Units
+
+The fundamental building block that systemd manages is called a "unit".  A "unit" can describe different types of objects, but the most common type is a "service".  
+
+A "unit file" is the configuration file that describes a unit and tells systemd what dependencies exist and how to start, stop and monitor the object.
+
+"unit files" are stored in 2 different directories.  One location is reserved for the default configurations as shipped by Red Hat and the other is for customization by the local administrators.
+
+  * Red Hat unit files:    /usr/lib/systemd/system/...
+  * Customizations:        /etc/systemd/system/...
+
+=== Targets
+systemd has a concept similar to SysV init runlevels, called targets.  systemd will boot to the “default target” which can be configured using the systemctl set-default command.  Some common targets and their equivalent SysV runlevels are:
+
+  * multi-user.target == runlevel 3
+  * graphical.target == runlevel 5
+
+Let's view the current default target.
+
+.[root@node1]#
+----
+# systemctl get-default
+----
+
+.Command Output
+[source,indent=4]
+----
+multi-user.target
+----
+
+=== Services
+As mentioned above, systemd has another concept called a service.  A service is a type of unit which defines the traditional daemon or process.  Now let us look at what services are running on the system:
+
+.[root@node1]#
+----
+# systemctl -t service
+----
+
+
+.Command Output
+[source,indent=4]
+----
+UNIT                               LOAD   ACTIVE SUB     DESCRIPTION                     
+auditd.service                     loaded active running Security Auditing Service       
+chronyd.service                    loaded active running NTP client/server               
+crond.service                      loaded active running Command Scheduler               
+dbus.service                       loaded active running D-Bus System Message Bus        
+dracut-shutdown.service            loaded active exited  Restore /run/initramfs on s
+firewalld.service                  loaded active running firewalld - dynamic firewal
+...<output truncated>...
+----
+
+Next let's view all of the services available (ie: everything installed, running or not) on the system. The following command is similar to the older chkconfig --list as it will show both enabled and disabled services:
+
+.[root@node1]#
+----
+# systemctl list-unit-files -t service
+----
+
+.Command Output
+[source,indent=4]
+----
+UNIT FILE                                   STATE   
+arp-ethers.service                          disabled
+auditd.service                              enabled 
+autovt@.service                             enabled 
+blk-availability.service                    disabled
+chrony-dnssrv@.service                      static  
+chrony-wait.service                         disabled
+chronyd.service                             enabled 
+...<output truncated>...
+----
+
+The state will  be enabled, disabled, static, or masked.  Static indicates that the unit file does not contain an "install" section used to enable the unit.  In this case, the unit typically performs a one-off action or is used as a dependency of another unit and should not be run by itself.
+
+== Examples
+
+=== Installing a LAMP stack
+
+Now that we have a good idea of what’s installed on our system, let’s get a basic lamp stack up and running.  If you prefer not to type all of these commands, there's a cheat script below to save you some time.
+
+.[root@node1]#
+----
+yum install -y httpd mariadb-server mariadb 
+
+systemctl enable --now httpd mariadb
+----
+
+NOTE: The "enable --now" syntax was introduced in a recent release of RHEL 7 and of course now in RHEL 8.  It allows for permanently enabling as well as immediately starting services in a single command.
+
+.Command Output
+[source,indent=4]
+----
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+Created symlink /etc/systemd/system/mysql.service → /usr/lib/systemd/system/mariadb.service.
+Created symlink /etc/systemd/system/mysqld.service → /usr/lib/systemd/system/mariadb.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → /usr/lib/systemd/system/mariadb.service.
+----
+
+Now let's check the status.  You should see two separate sections in the output, one for httpd and one for mariadb.
+
+.[root@node1]#
+----
+systemctl status httpd mariadb
+----
+
+.Command Output
+[source,indent=4]
+----
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (running) since Wed 2019-05-01 21:37:54 EDT; 12s ago
+     Docs: man:httpd.service(8)
+ Main PID: 5135 (httpd)
+   Status: "Running, listening on: port 80"
+    Tasks: 213 (limit: 24007)
+   Memory: 26.5M
+   CGroup: /system.slice/httpd.service
+           ├─5135 /usr/sbin/httpd -DFOREGROUND
+           ├─5163 /usr/sbin/httpd -DFOREGROUND
+        ...<output truncated>...
+----
+
+Last but not least, you need to enable a firewall port.
+
+.[root@node1]#
+----
+firewall-cmd --add-service=http
+----
+
+So as promised, here is a cheat script that performs all of the above steps.
+
+.[root@node1]#
+----
+cheat-systemd-lamp.sh
+----
+
+
+=== Customizing Unit Files
+
+systemd controls more than daemons or services. For this lab, we will primarily be working with service units but it's important to know that systemd is handling the dependencies between other types: sockets, timers, mounts, swap, slices, etc.
+
+Unit files are stored in one of three places:
+
+  * '/usr/lib/systemd/system' - default configs that ship with the RHEL and are updated by regular maintenance
+  * '/etc/systemd/system' - custom configs that persist and replace (or augment) default configs
+  * '/run/systemd/system' - runtime changes that won't persist
+
+While the defaults for unit files won’t need to be altered most of the time, there will be circumstances where changing the defaults is quite beneficial. These could include hardware or software watchdog monitoring, tunings, resource management, or many other reasons.
+
+Create a drop-in configuration file to extend the default httpd.service unit
+
+[discrete]
+==== Modify httpd
+
+.[root@node1]#
+----
+cheat-systemd-httpdconfig.sh
+----
+
+.Command Output
+[source,indent=4]
+----
+# Contents of /etc/systemd/system/httpd.service.d/50-httpd.conf
+[Service]
+Restart=always
+OOMScoreAdjust=-1000
+----
+
+Notify systemd of the changes.
+
+.[root@node1]#
+----
+systemctl daemon-reload
+systemctl status httpd
+----
+
+.Command Output
+[source,indent=4]
+----
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/httpd.service.d
+           └─50-httpd.conf
+   Active: active (running) since Wed 2019-05-01 21:37:54 EDT; 11min ago
+     Docs: man:httpd.service(8)
+ Main PID: 5135 (httpd)
+   Status: "Running, listening on: port 80"
+    Tasks: 213 (limit: 24007)
+   Memory: 26.5M
+   CGroup: /system.slice/httpd.service
+           ├─5135 /usr/sbin/httpd -DFOREGROUND
+           ├─5163 /usr/sbin/httpd -DFOREGROUND
+----
+
+Notice that systemctl status displays that the unit has been extended with a drop-in file.
+
+OOMScoreAdjust is used by the Kernel's Out Of Memory killer and is an  integer between -1000 (to disable OOM killing for this process) and 1000 (to make killing of this process under memory pressure very likely).  
+
+[discrete]
+==== Modify mariadb
+
+Similar to what you did in the last step, extend the mariadb.service unit with Restart=always. 
+
+This time we'll use systemctl to create the drop-in and notify systemd of the changes.
+
+.[root@node1]#
+----
+systemctl edit mariadb
+----
+
+.Type the following using the editor:
+[source,indent=4]
+----
+[Service]
+Restart=always
+----
+
+Save and quit the editor, and view the unit
+
+.[root@node1]#
+----
+systemctl cat mariadb
+systemctl status mariadb
+----
+
+Notice that `systemctl edit` allows inserting the content for the drop-in and also handles the `systemctl daemon-reload` automatically. Also notice that `systemctl cat` is a quick and easy way to view the contents of a unit & and it's drop-ins.
+
+== Additional Resources
+
+Red Hat Documentation
+
+    * link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/managing-services-with-systemd_configuring-basic-system-settings[Managing Services with Systemd]
+
+[discrete]
+== End of Unit
+
+link:../RHEL8-Workshop.adoc#toc[Return to TOC]
+
+////
+Always end files with a blank line to avoid include problems.
+////
