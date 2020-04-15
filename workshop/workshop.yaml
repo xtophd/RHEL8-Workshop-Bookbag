@@ -3,8 +3,23 @@ name: Bookbag Template
 modules:
   activate:
     - overview
-    - abstract
     - prepare-environment
     - exercises
     - cleanup
     - solving-resetting
+
+    - abstract
+    - webconsole
+    - systemd
+    - firewalld
+    - nftables
+    - ebpf
+    - appstream-yum
+    - podman
+    - buildah
+    - virtualization
+    - tlog
+    - lvm-vdo
+    - stratis
+    - boom
+

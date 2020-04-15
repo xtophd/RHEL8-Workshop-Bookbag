@@ -3,18 +3,78 @@ modules:
   abstract:
     name: Workshop Abstract
     exit_sign: Workshop Overview
+
   overview:
     name: Workshop Overview
     exit_sign: Prepare Environment
+
   prepare-environment:
     name: Prepare Environment
     exit_sign: Lab Exercises
+
   exercises:
     name: Lab Exercises
     exit_sign: Cleanup
+
   cleanup:
     name: Cleanup
-    exit_sign: Resetting and Solving
+    exit_sign: Workshop Abstract
+
+  abstract
+    name: Workshop Abstract
+    exit_sign: Web Console (Cockpit)
+
+  webconsole
+    name: Web Console (Cockpit)
+    exit_sign: System Service Management (systemd)
+
+  systemd
+    name: System Service Management (systemd)
+    exit_sign: Firewall Rule Management (firewalld)
+
+  firewalld
+    name: Firewall Rule Management (firewalld)
+    exit_sign: Firewall Subsystem (nftables) 
+
+  nftables
+    name: Firewall Subsystem (nftables) 
+    exit_sign: Packet Filter (ebpf)
+
+  ebpf
+    name: Packet Filter (ebpf)
+    exit_sign: Application Delivery (app streams)
+
+  appstream-yum
+    name:  Application Delivery (app streams)
+    exit_sign: Container Management (podman)
+
+  podman
+    name:  Container Management (podman)
+    exit_sign: Container Development (buildah and skopeo)
+
+  buildah
+    name:  Container Development (buildah and skopeo)
+    exit_sign: Virtualization Management (libvirt)
+
+  virtualization
+    name: Virtualization Management (libvirt)
+    exit_sign: Session Logging (tlog)
+
+  tlog
+    name: Session Logging (tlog)
+    exit_sign: Storage Management and Optimization (lvm and vdo)
+
+  lvm-vdo
+    name: Storage Management and Optimization (lvm and vdo)
+    exit_sign: Simplified Storage Management (stratis)
+
+  stratis
+    name: Simplified Storage Management (stratis)
+    exit_sign: Boot Management (boom)
+  boom
+    name:  Boot Management (boom)
+    exit_sign: Ressting and Solving
+
   solving-resetting:
     name: Resetting and Solving
     exit_sign: Finish Workshop
