@@ -2,9 +2,9 @@
 modules:
   overview:
     name: Workshop Overview
-    exit_sign: Prepare Environment
-  prepare-environment:
-    name: Prepare Environment
+    exit_sign: Environment Connection
+  connection:
+    name: Environment Connection 
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name: "Web Console (cockpit)"
