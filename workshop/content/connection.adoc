@@ -24,9 +24,7 @@ Your password is: *{PASSWORD}*
 
 ----
 
-Web Console Access:
-
-link:https://{TARGET_IP/
+Web Console link:https://{TARGET_IP}/[Click Bait]
 
 [source,bash,options="nowrap",subs="{markup-in-source}"]
 ----
