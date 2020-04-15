@@ -3,8 +3,8 @@ name: Bookbag Template
 modules:
   activate:
     - overview
+    - documentation/webconsole
     - prepare-environment
     - exercises
     - cleanup
     - solving-resetting
-    - documentation/abstract

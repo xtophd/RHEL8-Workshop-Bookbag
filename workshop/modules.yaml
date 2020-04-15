@@ -2,15 +2,12 @@
 modules:
   overview:
     name: Workshop Overview
-    exit_sign: Workshop Abstract
-  documentation/abstract:
-    name: Workshop Abstract
     exit_sign: Prepare Environment
   prepare-environment:
     name: Prepare Environment
-    exit_sign: Lab Exercises
-  exercises:
-    name: Lab Exercises
+    exit_sign: "System Management Web Console (cockpit)"
+  documentation/webconsole:
+    name: "System Management Web Console (cockpit)"
     exit_sign: Cleanup
   cleanup:
     name: Cleanup
