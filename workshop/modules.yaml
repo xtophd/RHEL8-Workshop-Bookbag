@@ -2,6 +2,9 @@
 modules:
   overview:
     name: Workshop Overview
+    exit_sign: Workshop Abstract
+  documentation/abstract:
+    name: Workshop Abstract
     exit_sign: Prepare Environment
   prepare-environment:
     name: Prepare Environment

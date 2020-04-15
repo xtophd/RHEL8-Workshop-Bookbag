@@ -7,3 +7,4 @@ modules:
     - exercises
     - cleanup
     - solving-resetting
+    - documentation/abstract
