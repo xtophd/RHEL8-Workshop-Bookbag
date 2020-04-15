@@ -24,6 +24,10 @@ Your password is: *{PASSWORD}*
 
 ----
 
+Web Console Access:
+
+link:https://{TARGET_IP/
+
 [source,bash,options="nowrap",subs="{markup-in-source}"]
 ----
 $ *ssh {USERNAME}@{TARGET_IP}*

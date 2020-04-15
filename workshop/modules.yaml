@@ -14,10 +14,34 @@ modules:
     exit_sign: "Firewall Management (firewalld)"
   documentation/firewalld:
     name: "Firewall Management (firewalld)"
-    exit_sign: Cleanup
-  cleanup:
-    name: Cleanup
-    exit_sign: Resetting and Solving
-  solving-resetting:
-    name: Resetting and Solving
-    exit_sign: Finish Workshop
+    exit_sign: "Firewall Rules (nf-tables)"
+  documentation/nftables:
+    name: "Firewall Rules (nf-tables)"
+    exit_sign: "Packet Tracing (ebpf)"
+  documentation/ebpf: 
+    name: "Packet Tracing (ebpf)"
+    exit_sign: "Application Streams"
+  documentation/appstream:
+    name: "Application Streams"
+    exit_sign: "Containers Mgmt (podman)"
+  documentation/podman:
+    name: "Containers Mgmt (podman)"
+    exit_sign: "Packet Tracing (ebpf)"
+  documentation/buildah:
+    name: "Containers Dev (buildah)"
+    exit_sign: "Virtualization (image builder)"
+  documentation/virtualization:
+    name: "Virtualization (image builder)"
+    exit_sign: "Session Logging (tlog)"
+  documentation/tlog:
+    name: "Session Logging (tlog)"
+    exit_sign: "Data Optimization (lvm,vdo)"
+  documentation/lvm-vdo:
+    name: "Data Optimization (lvm,vdo)"
+    exit_sign: "Storage Management"
+  documentation/stratis:
+    name: "Storage Management"
+    exit_sign: "Boot Menu Management"
+  documentation/boom:
+    name: "Boot Menu Management"
+    exit_sign: "Finish Workshop"

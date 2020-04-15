@@ -7,7 +7,13 @@ modules:
     - documentation/webconsole
     - documentation/systemd
     - documentation/firewalld
-    - prepare-environment
-    - exercises
-    - cleanup
-    - solving-resetting
+    - documentation/nftables
+    - documentation/ebpf
+    - documentation/appstream
+    - documentation/podman
+    - documentation/buildah
+    - documentation/virtualization
+    - documentation/tlog
+    - documentation/lvm-vdo
+    - documentation/stratis
+    - documentation/boom

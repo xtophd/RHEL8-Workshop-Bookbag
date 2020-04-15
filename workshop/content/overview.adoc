@@ -3,11 +3,8 @@
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
-
-== The Definitive Red Hat Enterprise Linux 8 Hands-on Lab
-
 [discrete]
-=== Presented By
+== Presented By
 
   * Christoph Doerbeck
   * Karl Abbott
@@ -15,7 +12,7 @@
   * Gordon Keegan
   * Matt St. Onge
 
-=== Overview
+== Overview
 
 First of all, THANK YOU for registering and participating in *The Definitive Red Hat Enterprise Linux 8 Hands-on Lab*.  The lab team has worked very hard to assemble a series of exercises to introduce many of the new features and capabilities found in the next great release of RHEL.  We hope you enjoy this experience and please don't hesitate to ask questions.
 
@@ -37,16 +34,3 @@ NOTE:  This whole effort is done using official Red Hat software and although th
 
 Source for this workshop: http://github.com/xtophd/RHEL8-Workshop
 
-=== User Information
-
-Here is your custom user information:
-
-[source,bash,options="nowrap",subs="{markup-in-source}"]
-----
-Here is some important information about your environment:
-
-Your GUID is: *{USER_GUID}*
-
-Your username is: *{USERNAME}*
-
-----
