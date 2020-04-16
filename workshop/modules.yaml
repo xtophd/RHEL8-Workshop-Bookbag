@@ -31,7 +31,7 @@ modules:
     name:      "Containers Dev (buildah)"
     exit_sign: "Virtualization (image builder)"
   documentation/virtualization:
-    name: i    "Virtualization (image builder)"
+    name:      "Virtualization (image builder)"
     exit_sign: "Session Logging (tlog)"
   documentation/tlog:
     name:      "Session Logging (tlog)"
