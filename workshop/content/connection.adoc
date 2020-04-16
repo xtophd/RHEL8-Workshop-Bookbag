@@ -41,14 +41,11 @@ Your GUID is: *{USER_GUID}*
 
 == SSH Information
 
-[source,bash,options="nowrap",subs="{markup-in-source}"]
-----
-Target IP is: *{TARGET_IP}*
+  * Target IP is: *{TARGET_IP}*
 
-Username is: *{USERNAME}*
+  * Username is: *{USERNAME}*
 
-Password is: *{PASSWORD}*
-----
+  * Password is: *{PASSWORD}*
 
 Example of connecting via ssh
 
@@ -59,12 +56,9 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
 == Web Console Information
 
-[source,bash,options="nowrap",subs="{markup-in-source}"]
-----
-URL is: link:https://{TARGET_IP}/[]
+  * URL is: link:https://{TARGET_IP}/[]
 
-Username is: *{USERNAME}*
+  * Username is: *{USERNAME}*
 
-Password is: *{PASSWORD}*
-----
+  * Password is: *{PASSWORD}*
 
