@@ -56,6 +56,8 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
 == Web Console Information
 
+NOTE: We only test with Firefox and/or Google Chrome.  Your mileage will vary using MacOS Safari or Windows Explorer.
+
   * URL is: link:https://{TARGET_IP}/[]
 
   * Username is: *{USERNAME}*
