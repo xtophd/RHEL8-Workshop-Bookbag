@@ -2,9 +2,9 @@
 modules:
   overview:
     name: Workshop Overview
-    exit_sign: Environment Connection
+    exit_sign: Connection Information
   connection:
-    name: Environment Connection 
+    name: Connection Information
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name: "Web Console (cockpit)"
