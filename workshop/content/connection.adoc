@@ -5,34 +5,7 @@
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
-== Getting Started
-
-Exercises in this workshop require either:
-
-  * shell access (via ssh)
-  * web gui access (via web console)
-
-You can use the convenient shell provided to the right of these instructions, or if you prefer you can use your preferred ssh client with the same connectivity info.  Your choice...
-
-== Environment Description
-
-Activities in this workshop are performed on virtual machines running in a public cloud.  Each attendee has received their own unique environment and will be provided administrator priviledges when needed.
-
-There are 4 systems:
-
-  * workstation - primary system and launch point to other hosts
-  * node1, node2, and node3
-
-The network domain is likely `example.com` but not necessarily so.  We expect most exercises and envionments will work by using the short hostnames.  So when asked to use node1 for a unit:
-
-  * ssh to workstation using the provided connection info 
-  * and then `ssh node1`
-
-WARNING: As an administrator, you are capable of ruining your environment.  We strongly encorage you stick to the exercises as perscribed.  Recovery of your environment is unlikely due to limited time and resources.
-
 == GUID Information
-
-If you need help from an instructor you may be asked to provide your unique GUID.
 
 [source,bash,options="nowrap",subs="{markup-in-source}"]
 ----
@@ -56,11 +29,40 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
 == Web Console Information
 
-NOTE: We only test with Firefox and/or Google Chrome.  Your mileage will vary using MacOS Safari or Windows Explorer.
 
   * URL is: link:https://{TARGET_IP}/[]
 
   * Username is: *{USERNAME}*
 
   * Password is: *{PASSWORD}*
+
+
+== Getting Started
+
+WARNING: As an administrator, you are capable of ruining your environment.  We strongly encorage you stick to the exercises as perscribed.  Recovery of your environment is unlikely due to limited time and resources.
+
+NOTE: We only test with Firefox and/or Google Chrome.  Your mileage will vary using MacOS Safari or Windows Explorer.
+
+Exercises in this workshop require either:
+
+  * shell access (via ssh)
+  * web gui access (via web console)
+
+You can use the convenient shell provided to the right of these instructions, or if you prefer you can use your preferred ssh client with the same connectivity info.  Your choice...
+
+== Environment Description
+
+Activities in this workshop are performed on virtual machines running in a public cloud.  Each attendee has received their own unique environment and will be provided administrator priviledges when needed.
+
+There are 4 systems:
+
+  * workstation - primary system and launch point to other hosts
+  * node1
+  * node2
+  * node3
+
+The network domain is likely `example.com` but not necessarily so.  We expect most exercises and envionments will work by using the short hostnames.  So when asked to use `node1` for a unit:
+
+  * ssh to `workstation` using the provided connection info 
+  * and then `ssh node1`
 
