@@ -23,9 +23,9 @@ modules:
     exit_sign: "Application Streams"
   documentation/appstream:
     name: "Application Streams"
-    exit_sign: "Containers Mgmt (podman)"
+    exit_sign: "Containers Management (podman)"
   documentation/podman:
-    name: "Containers Mgmt (podman)"
+    name: "Containers Management (podman)"
     exit_sign: "Packet Tracing (ebpf)"
   documentation/buildah:
     name: "Containers Dev (buildah)"
@@ -41,7 +41,10 @@ modules:
     exit_sign: "Storage Management"
   documentation/stratis:
     name: "Storage Management"
-    exit_sign: "Boot Menu Management"
+    exit_sign: "Kernel Live Patching (kpatch)"
+  documentation/kpatch:
+    name: "Kernel Live Patching (kpatch)"
+    exit_sign: "Boot Menu Management (boom)"
   documentation/boom:
-    name: "Boot Menu Management"
+    name: "Boot Menu Management (boom)"
     exit_sign: "Finish Workshop"

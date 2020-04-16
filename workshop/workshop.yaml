@@ -16,4 +16,5 @@ modules:
     - documentation/tlog
     - documentation/lvm-vdo
     - documentation/stratis
+    - documentation/kpatch
     - documentation/boom
