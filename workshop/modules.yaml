@@ -21,7 +21,7 @@ modules:
   documentation/ebpf: 
     name:      "eBPF Tracing (bcc-tools)"
     exit_sign: "Application Streams (yum)"
-  documentation/appstream:
+  documentation/appstream-yum:
     name:      "Application Streams (yum)"
     exit_sign: "Containers Management (podman)"
   documentation/podman:
