@@ -7,7 +7,7 @@
 
 == GUID Information
 
-[source,bash,options="nowrap",subs="{markup-in-source}"]
+[bash,options="nowrap",subs="{markup-in-source}"]
 ----
 Your GUID is: *{USER_GUID}*
 ----
@@ -22,7 +22,7 @@ Your GUID is: *{USER_GUID}*
 
 Example of connecting via ssh
 
-[source,bash,options="nowrap",subs="{markup-in-source}"]
+[bash,options="nowrap",subs="{markup-in-source}"]
 ----
 $ *ssh {USERNAME}@{TARGET_IP}*
 ----
