@@ -17,4 +17,3 @@ modules:
     - documentation/lvm-vdo
     - documentation/stratis
     - documentation/kpatch
-    - documentation/boom

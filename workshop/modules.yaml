@@ -44,7 +44,4 @@ modules:
     exit_sign: "Kernel Live Patching (kpatch)"
   documentation/kpatch:
     name:      "Kernel Live Patching (kpatch)"
-    exit_sign: "Boot Menu Management (boom)"
-  documentation/boom:
-    name:      "Boot Menu Management (boom)"
     exit_sign: "Finish Workshop"
