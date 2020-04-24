@@ -39,7 +39,8 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
 == Getting Started
 
-WARNING: As an administrator, you are capable of ruining your environment.  We strongly encourage you stick to the exercises as perscribed.  Recovery of your environment is unlikely due to limited time and resources.
+WARNING: As an administrator, you are capable of ruining your environment.  We strongly encourage you 
+to stick to the exercises as prescribed.  Recovery of your environment is unlikely due to limited time and resources.
 
 NOTE: We only test with Firefox and/or Google Chrome.  Your mileage will vary using MacOS Safari or Windows Explorer.
 
