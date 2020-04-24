@@ -97,6 +97,8 @@ Then:
 # *ssh node3*
 ----
 
+INFO: You may need to `sudo -i` to elevate your priviledges.  Just make sure you're the `root` user.
+
 On node3, let’s now run:
 
 [bash,options="nowrap",subs="{markup-in-source}"]
@@ -232,6 +234,8 @@ Then to verify, you can use an ansible adhoc command to check your work.
 ----
 # *ansible rhel8 -i config/rhel8-workshop -o -a "rpm -q postgresql-server"*
 ----
+
+NOTE: You will get an error from node2, since postgresql-server was not installed there
 
 You should have:
 
