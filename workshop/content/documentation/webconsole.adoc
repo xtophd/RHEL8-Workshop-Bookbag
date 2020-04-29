@@ -36,7 +36,7 @@ Features of the Web Console include:
   * Managing System Subscriptions
   * more...
 
-The following exercises will walk you through installing and configuring Web Console on RHEL 8. 
+The following exercises will cover some of  the capabilities of the Web Console on RHEL 8, as well as basic installation and set up.
 
 == Getting Started
 
