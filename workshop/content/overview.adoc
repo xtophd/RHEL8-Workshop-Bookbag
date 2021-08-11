@@ -14,8 +14,6 @@
 
 == Overview
 
-INFO: Refreshed for Red Hat Summit 2021 using Red Hat Enterprise Linux 8.4
-
 First of all, THANK YOU for registering and participating in *The Definitive Red Hat Enterprise Linux 8 Hands-on Lab*.  The lab team has worked very hard to assemble a series of exercises to introduce many of the new features and capabilities found in the next great release of RHEL.  We hope you enjoy this experience and please don't hesitate to ask questions.
 
 This hands-on lab will lead you through a mix of self-paced and proctored exercises covering core and updated capabilities of Red Hat Enterprise Linux 8. Led by your favorite Red Hat field solution architects, key areas covered include:
