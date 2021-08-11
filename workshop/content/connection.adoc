@@ -2,6 +2,8 @@
 :TARGET_IP: %bastion.rhel8lab_bastion_public_ip_address%
 :USERNAME:  %USERNAME%
 :PASSWORD:  %PASSWORD%
+:SSH_COMMMAND: %ssh_command%
+:SSH_PASSWORD: %ssh_password%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
