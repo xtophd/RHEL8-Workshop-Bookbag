@@ -1,7 +1,7 @@
-:USER_GUID: %guid%
-:TARGET_IP: %rhel8lab_workstation_public_ip_address%
-:USERNAME:  cloud-user
-:PASSWORD:  r3dh4t1!
+:USER_GUID: %GUID%
+:TARGET_IP: %bastion.rhel8lab_bastion_public_ip_address%
+:USERNAME:  %USERNAME%
+:PASSWORD:  %PASSWORD%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
