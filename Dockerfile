@@ -5,7 +5,7 @@ USER root
 COPY . /tmp/src
 
 RUN git clone -b summit-2021-dev https://github.com/xtophd/RHEL8-Workshop /tmp/RHEL8-Workshop && \
-    mkdir -P /tmp/src/workshop/content/documentation2 && \
+    mkdir -p /tmp/src/workshop/content/documentation2 && \
     cp -R /tmp/RHEL8-Workshop/documentation/_include/* /tmp/src/workshop/content/documentation2
 
 RUN rm -rf /tmp/src/.git* && \
