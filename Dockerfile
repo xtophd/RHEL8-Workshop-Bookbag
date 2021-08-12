@@ -18,6 +18,7 @@ RUN pwd && ls -lR ${DOC_DST}
 RUN git clone --depth 1 -b ${GIT_REF} ${GIT_REPO} ${GIT_TMP} && \
     mkdir -p ${DOC_DST} && \
     cp -R ${DOC_SRC}/* ${DOC_DST} && \
+    yum clean all && \
     rm -rf ${GIT_TMP}
 
 RUN rm -rf ${APP_ROOT}/.git*  && \

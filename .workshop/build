@@ -7,7 +7,7 @@
 # at it's default location of '/opt/app-root/src/workshop', but by moving it,
 # it is out of view of the user doing the workshop and they aren't likely to
 # delete it by accident and break the display of the workshop content.
-mv workshop /opt/app-root/workshop
+##mv workshop /opt/app-root/workshop
 
 # Move the workshop envvars
 mv envvars /opt/app-root/envvars
