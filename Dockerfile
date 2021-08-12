@@ -1,21 +1,31 @@
 FROM quay.io/openshifthomeroom/workshop-dashboard:5.0.0
 
+ENV GIT_REPO=https://github.com/xtophd/RHEL8-Workshop
+ENV GIT_REF=summit-2021-dev
+ENV GIT_TMP=/tmp/git-clone
+ENV APP_ROOT=/tmp/src
+ENV DOC_SRC=${GIT_TMP}/documentation/_include
+ENV DOC_DST=${APP_ROOT}/workshop/content/documentation
+
 USER root
 
-COPY . /tmp/src
+COPY . ${APP_ROOT}
 
-RUN pwd && ls -lRn /tmp/src/workshop
+RUN pwd && ls -lR 
 
-RUN git clone --depth 1 -b summit-2021-dev https://github.com/xtophd/RHEL8-Workshop /tmp/RHEL8-Workshop && \
-    cp -R /tmp/RHEL8-Workshop/documentation/_include/* /tmp/src/workshop/content/documentation && \
-    rm -rf /tmp/RHEL8-Workshop
+RUN pwd && ls -lR ${DOC_DST}
 
-RUN rm -rf /tmp/src/.git*  && \
-    chown -R 1001 /tmp/src && \
-    chgrp -R 0 /tmp/src    && \
-    chmod -R g+w /tmp/src
+RUN git clone --depth 1 -b ${GIT_REF} ${GIT_REPO} ${GIT_TMP} && \
+    mkdir -p ${DOC_DST} && \
+    cp -R ${DOC_SRC}/* ${DOC_DST} && \
+    rm -rf ${GIT_TMP}
 
-RUN pwd && ls -lRn /tmp/src/workshop
+RUN rm -rf ${APP_ROOT}/.git*  && \
+    chown -R 1001 ${APP_ROOT} && \
+    chgrp -R 0 ${APP_ROOT}    && \
+    chmod -R g+w ${APP_ROOT}
+
+RUN pwd && ls -lR ${APP_ROOT}
 
 USER 1001
 
