@@ -34,7 +34,8 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: ${NAME}:latest
+#          name: ${NAME}:latest
+          name: ${NAME}:Summit_2021
       source:
         git:
           ref: Summit_2021
