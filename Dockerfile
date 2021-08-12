@@ -28,6 +28,8 @@ RUN rm -rf ${APP_ROOT}/.git*  && \
 
 RUN pwd && ls -lR ${APP_ROOT}
 
+RUN cat /usr/libexec/s2i/assemble
+
 USER 1001
 
 RUN /usr/libexec/s2i/assemble
