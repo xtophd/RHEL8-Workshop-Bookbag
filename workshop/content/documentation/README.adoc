@@ -1,0 +1,4 @@
+= This directory to remain empty
+
+This documentation for this bookbag is maintained at https://github.com/xtophd/RHEL8-Workshop.  The automation that creates this bookbag will fetch the proper sources and copy them here during the build process.
+
