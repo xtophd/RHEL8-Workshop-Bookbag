@@ -2,11 +2,12 @@ FROM quay.io/openshifthomeroom/workshop-dashboard:5.0.0
 
 USER root
 
-RUN mkdir -p ./workshop/content/documentation && \
-    git clone -b summit-2021-dev https://github.com/xtophd/RHEL8-Workshop /tmp/RHEL8-Workshop && \
-    cp -vR /tmp/RHEL8-Workshop/documentation/_include/* ./workshop/content/documentation
-
 COPY . /tmp/src
+
+RUN mkdir -p /tmp/src/workshop/content/documentation && \
+    git clone -b summit-2021-dev https://github.com/xtophd/RHEL8-Workshop /tmp/src/workshop/content/documentation && \
+    cp -vR /tmp/RHEL8-Workshop/documentation/_include/* /tmp/src/workshop/content/documentation && \
+    ls -R /tmp/src/workshop/content/documentation
 
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \

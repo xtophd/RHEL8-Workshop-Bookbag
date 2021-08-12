@@ -1,5 +1,5 @@
 ---
-name: Definitive RHEL8 Workshop
+name: Definitive RHEL8 Workshop (v8.4)
 modules:
   activate:
     - overview
