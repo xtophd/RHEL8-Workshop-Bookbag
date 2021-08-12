@@ -5,7 +5,8 @@ ENV GIT_REF=summit-2021-dev
 ENV GIT_TMP=/tmp/git-clone
 ENV APP_ROOT=/tmp/src
 ENV DOC_SRC=${GIT_TMP}/documentation/_include
-ENV DOC_DST=${APP_ROOT}/workshop/content/documentation
+#ENV DOC_DST=${APP_ROOT}/workshop/content/documentation
+ENV DOC_DST=/opt/app-root/documentation
 
 USER root
 
