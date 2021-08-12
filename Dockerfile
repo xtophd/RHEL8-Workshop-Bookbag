@@ -4,10 +4,9 @@ USER root
 
 COPY . /tmp/src
 
-RUN mkdir -p /tmp/src/workshop/content/documentation 
 RUN git clone --depth 1 -b summit-2021-dev https://github.com/xtophd/RHEL8-Workshop /tmp/RHEL8-Workshop 
-RUN cp -vR /tmp/RHEL8-Workshop/documentation/_include/* /tmp/src/workshop/content/documentation 
-RUN ls -lR /tmp/src/workshop 
+
+COPY /tmp/RHEL8-Workshop/documentation/_include/* /tmp/src/workshop/content/documentation 
 
 RUN rm -rf /tmp/src/.git*  && \
     chown -R 1001 /tmp/src && \
