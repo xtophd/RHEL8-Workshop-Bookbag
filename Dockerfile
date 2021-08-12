@@ -11,7 +11,7 @@ RUN git clone --depth 1 -b summit-2021-dev https://github.com/xtophd/RHEL8-Works
 RUN rm -rf /tmp/src/.git*  && \
     chown -R 1001 /tmp/src && \
     chgrp -R 0 /tmp/src    && \
-    chmod -R g+w /tmp/src  && \
+    chmod -R g+w /tmp/src
 
 USER 1001
 
