@@ -1,9 +1,9 @@
-:USER_GUID: %GUID%
-:TARGET_IP: %bastion.rhel8lab_bastion_public_ip_address%
-:USERNAME:  %USERNAME%
-:PASSWORD:  %PASSWORD%
-:SSH_COMMMAND: %ssh_command%
-:SSH_PASSWORD: %ssh_password%
+:USER_GUID: %guid%
+:TARGET_IP: %student_bastion_hostname%
+:SSH_COMMMAND: %student_ssh_command%
+:SSH_PASSWORD: %student_ssh_password%
+:USERNAME:  %username%
+:PASSWORD:  %student_ssh_password%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
@@ -16,11 +16,11 @@ Your GUID is: *{USER_GUID}*
 
 == SSH Information
 
-  * Target IP is: *{TARGET_IP}*
+  * Target host is: *{TARGET_IP}*
 
   * Username is: *{USERNAME}*
 
-  * Password is: *{PASSWORD}*
+  * Password is: *{STUDENT_SSH_PASSWORD}*
 
 Example of connecting via ssh
 
@@ -36,7 +36,7 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
   * Username is: *{USERNAME}*
 
-  * Password is: *{PASSWORD}*
+  * Password is: *{STUDENT_SSH_PASSWORD}*
 
 
 == Getting Started
