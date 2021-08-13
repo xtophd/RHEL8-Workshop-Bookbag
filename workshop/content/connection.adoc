@@ -59,13 +59,14 @@ Activities in this workshop are performed on virtual machines running in a publi
 
 There are 4 systems:
 
-  * workstation - primary system and launch point to other hosts
+  * bastion - primary system and launch point to other hosts
   * node1
   * node2
   * node3
+  * node4
 
 The network domain is likely `example.com` but not necessarily so.  We expect most exercises and envionments will work by using the short hostnames.  So when asked to use `node1` for a unit:
 
-  * ssh to `workstation` using the provided connection info 
+  * ssh to `bastion` using the provided connection info 
   * and then `ssh node1`
 

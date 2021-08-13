@@ -13,15 +13,15 @@ endif::[]
 
 = Workshop Environment Preparation
 
-== Sign-On on to your *workstation* session
+== Sign-On on to your *bastion* session
 
-Using the connection information and credentials provided by the instructor, get yourselves signed into your workstation session.
+Using the connection information and credentials provided by the instructor, get yourselves signed into your bastion session.
 
 == Invoke *tmux* Session
 
 *tmux* is a very handy utilty for terminal session management.  If for any reason you lose connectivity or your session is terminated, *tmux* will preserve your session and allow you to reconnect.  There are MANY other features provided by this utility.  Some of them are listed in the primary document section titled *Quick Overview of tmux*.
 
-.[cloud-user@workstation ~]#
+.[cloud-user@bastion ~]#
 ----
 tmux
 ----
@@ -30,7 +30,7 @@ tmux
 
 In order to execute the environment preparation, we need to become the administrative user 'root'.
 
-.[cloud-user@workstation ~]$ 
+.[cloud-user@bastion ~]$ 
 ----
 sudo -i
 ----
@@ -39,7 +39,7 @@ sudo -i
 
 WARNING: It is very likely that your instructor (or the automated deployment system) has already performed this step.  Do NOT delete and clone a new project directory if it already exists.
 
-.[root@workstation ~]#
+.[root@bastion ~]#
 ----
 cd ~
     
@@ -52,7 +52,7 @@ NOTE: This step is not needed if you just cloned the workshop, but if recent bug
 
 Here is how to refresh the workshop with the latest updates.
 
-.[root@workstation ~]#
+.[root@bastion ~]#
 ----
 cd ~/RHEL8-Workshop
 
@@ -65,7 +65,7 @@ WARNING: It is likely that your instructor (or the automated deployment system) 
 
 Copy the default configuration (ansible inventory) to the config directory.
 
-.[root@workstation ~]#
+.[root@bastion ~]#
 ----
 cd ~/RHEL8-Workshop
 
@@ -80,7 +80,7 @@ NOTE: If you run the deployment playbooks from the web console shell, you will b
 
 Now we will run the playbooks that will set up the workshop.
 
-.[root@workstation RHEL8-Workshop]#
+.[root@bastion RHEL8-Workshop]#
 ----
 cd ~/RHEL8-Workshop
 
