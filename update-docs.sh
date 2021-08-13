@@ -52,5 +52,5 @@ wget -O ${MY_TMP}/${GIT_PROJECT}-${GIT_BRANCH}.tar.gz ${GIT_REPO}/${GIT_PROJECT}
 ##    Extract the docs into the documentation directory
 ##
 
-cd ./workshop/content/documentation && tar zxvf ${MY_TMP}/${GIT_PROJECT}-${GIT_BRANCH}.tar.gz --strip-components=3 '*documentation/_include/*'
+cd ./workshop/content/documentation && tar zxvf ${MY_TMP}/${GIT_PROJECT}-${GIT_BRANCH}.tar.gz --strip-components=3 --overwrite '*documentation/_include/*'
 
