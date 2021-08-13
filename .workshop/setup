@@ -6,3 +6,23 @@
 # this script, or are deploying applications, your scripts must cope with
 # the steps having already been run. This is because this script will be
 # run a second time if the container were restarted for some reason.
+
+
+##    Definitive RHEL 8 Hands-On Lab (custom setup)
+
+##
+##    set simple variables from key:values
+##    passed into comtainer
+##
+
+mySSH_COMMAND=`echo $WORKSHOP_VARS | jp .ssh_command`
+mySSH_PASSWORD=`echo $WORKSHOP_VARS | jp .ssh_password`
+
+##
+##
+##
+
+find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_COMMAND%/${mySSH_COMMAND}/g" {} \;
+find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_PASSWORD%/${mySSH_PASSWORD}/g" {} \;
+
+

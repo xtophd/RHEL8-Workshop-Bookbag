@@ -1,9 +1,8 @@
 :USER_GUID: %guid%
-:TARGET_IP: %student_bastion_hostname%
-:SSH_COMMMAND: %student_ssh_command%
-:SSH_PASSWORD: %student_ssh_password%
-:USERNAME:  %USERNAME%
-:PASSWORD:  %student_ssh_password%
+:targethost_fqdn: %TARGETHOST_FQDN%
+:ssh_command: %WORKSHOP_SSH_COMMAND%
+:ssh_username: %WORKSHOP_SSH_USERNAME%
+:ssh_password: %WORKSHOP_SSH_PASSWORD%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
@@ -16,17 +15,17 @@ Your GUID is: *{USER_GUID}*
 
 == SSH Information
 
-  * Target host is: *{TARGET_IP}*
+  * Target host is: *{targethost_fqdn}*
 
-  * Username is: *{USERNAME}*
+  * Username is: *{ssh_username}*
 
-  * Password is: *{STUDENT_SSH_PASSWORD}*
+  * Password is: *{ssh_password}*
 
 Example of connecting via ssh
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-$ *ssh {USERNAME}@{TARGET_IP}*
+$ *{ssh_command}*
 ----
 
 == Web Console Information
@@ -34,9 +33,9 @@ $ *ssh {USERNAME}@{TARGET_IP}*
 
   * URL is: link:https://{TARGET_IP}/[]
 
-  * Username is: *{USERNAME}*
+  * Username is: *{ssh_username}*
 
-  * Password is: *{STUDENT_SSH_PASSWORD}*
+  * Password is: *{ssh_password}*
 
 
 == Getting Started
