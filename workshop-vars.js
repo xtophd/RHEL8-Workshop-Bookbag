@@ -1,6 +1,6 @@
 {
-    "guid": "sample_guid",
-    "username": "sample_uid",
-    "password": "sample_password"
+    "guid": "js_sample_guid",
+    "username": "js_sample_uid",
+    "password": "js_sample_password"
 }
 

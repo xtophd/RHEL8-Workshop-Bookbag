@@ -1,5 +1,6 @@
 {
-    "json_userinfo": "user_info string",
-    "json_username":  "cloud-user",
-    "json_subdomain": "subdomain_base_suffix"
+    "guid": "json_sample_guid",
+    "username": "json_sample_uid",
+    "password": "json_sample_password"
 }
+

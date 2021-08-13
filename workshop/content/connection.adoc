@@ -2,7 +2,7 @@
 :TARGET_IP: %student_bastion_hostname%
 :SSH_COMMMAND: %student_ssh_command%
 :SSH_PASSWORD: %student_ssh_password%
-:USERNAME:  %username%
+:USERNAME:  %USERNAME%
 :PASSWORD:  %student_ssh_password%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
