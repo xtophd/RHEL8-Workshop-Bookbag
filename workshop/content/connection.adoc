@@ -1,5 +1,5 @@
-:USER_GUID: %guid%
-:targethost_fqdn: %TARGETHOST_FQDN%
+:guid: %WORKSHOP_GUID%
+:targethost_fqdn: %WORKSHOP_TARGETHOST_FQDN%
 :ssh_command: %WORKSHOP_SSH_COMMAND%
 :ssh_username: %WORKSHOP_SSH_USERNAME%
 :ssh_password: %WORKSHOP_SSH_PASSWORD%
@@ -31,7 +31,7 @@ $ *{ssh_command}*
 == Web Console Information
 
 
-  * URL is: link:https://{TARGET_IP}/[]
+  * URL is: link:https://{targethost_fqdn}/[]
 
   * Username is: *{ssh_username}*
 
