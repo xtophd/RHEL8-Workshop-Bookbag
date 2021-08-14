@@ -1,8 +1,8 @@
 :guid: %WORKSHOP_GUID%
 :targethost_fqdn: %WORKSHOP_TARGETHOST_FQDN%
 :ssh_command: %WORKSHOP_SSH_COMMAND%
-:ssh_username: %WORKSHOP_SSH_USERNAME%
 :ssh_password: %WORKSHOP_SSH_PASSWORD%
+:ssh_username: %WORKSHOP_USERNAME%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
@@ -10,7 +10,7 @@
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-Your GUID is: *{USER_GUID}*
+Your GUID is: *{guid}*
 ----
 
 == SSH Information

@@ -18,9 +18,10 @@
 mySSH_COMMAND=`echo $WORKSHOP_VARS | jq -r .ssh_command`
 mySSH_PASSWORD=`echo $WORKSHOP_VARS | jq -r .ssh_password`
 
-myTARGETHOST_FQDN=`echo $WORKSHOP_VARS | jq -r .ssh_command | cut -d @ -f 2`
+myUSERNAME=`echo $my_SSH_COMMAND | sed -e 's/@/ /' | cut -d ' ' -f 2`
+myTARGETHOST_FQDN=`echo $my_SSH_COMMAND | cut -d @ -f 2`
 
-myGUID=`echo $WORKSHOP_VARS | jq -r .ssh_command | cut -d . -f 2`
+myGUID=`echo $my_SSH_COMMAND | cut -d . -f 2`
 
 ##
 ##
@@ -29,6 +30,7 @@ myGUID=`echo $WORKSHOP_VARS | jq -r .ssh_command | cut -d . -f 2`
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_COMMAND%/${mySSH_COMMAND}/g" {} \;
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_PASSWORD%/${mySSH_PASSWORD}/g" {} \;
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_GUID%/${myGUID}/g" {} \;
+find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_USERNAME%/${myUSERNAME}/g" {} \;
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_TARGETHOST_FQDN%/${myTARGETHOST_FQDN}/g" {} \;
 
 
