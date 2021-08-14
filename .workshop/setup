@@ -15,8 +15,12 @@
 ##    passed into comtainer
 ##
 
-mySSH_COMMAND=`echo $WORKSHOP_VARS | jp .ssh_command`
-mySSH_PASSWORD=`echo $WORKSHOP_VARS | jp .ssh_password`
+mySSH_COMMAND=`echo $WORKSHOP_VARS | jq -r .ssh_command`
+mySSH_PASSWORD=`echo $WORKSHOP_VARS | jq -r .ssh_password`
+
+myTARGETHOST_FQDN=`echo $WORKSHOP_VARS | jq -r .ssh_command | cut -d @ -f 2`
+
+myGUID=`echo $WORKSHOP_VARS | jq -r .ssh_command | cut -d . -f 2`
 
 ##
 ##
@@ -24,5 +28,7 @@ mySSH_PASSWORD=`echo $WORKSHOP_VARS | jp .ssh_password`
 
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_COMMAND%/${mySSH_COMMAND}/g" {} \;
 find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_SSH_PASSWORD%/${mySSH_PASSWORD}/g" {} \;
+find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%WORKSHOP_GUID%/${myGUID}/g" {} \;
+find /opt/app-root/workshop/content/ -type f -exec sed -i "s/%TARGETHOST_FQND%/${myTARGETHOST_FQDN}/g" {} \;
 
 
