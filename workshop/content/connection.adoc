@@ -1,7 +1,7 @@
 :guid: %guid%
 :ssh_command: %ssh_command%
 :ssh_password: %ssh_password%
-:ssh_username: %ssh_username%%
+:ssh_username: %ssh_username%
 :targethost_fqdn: %targethost%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
