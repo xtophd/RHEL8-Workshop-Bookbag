@@ -18,10 +18,9 @@
 mySSH_COMMAND=`echo $WORKSHOP_VARS | jq -r .ssh_command`
 mySSH_PASSWORD=`echo $WORKSHOP_VARS | jq -r .ssh_password`
 
-myUSERNAME=`echo $my_SSH_COMMAND | sed -e 's/@/ /' | cut -d ' ' -f 2`
-myTARGETHOST_FQDN=`echo $my_SSH_COMMAND | cut -d @ -f 2`
-
-myGUID=`echo $my_SSH_COMMAND | cut -d . -f 2`
+myUSERNAME=`echo $WORKSHOP_VARS | jq -r .username`
+myTARGETHOST_FQDN=`echo $WORKSHOP_VARS | jq -r .targethost`
+myGUID=`echo $WORKSHOP_VARS | jq -r .guid`
 
 ##
 ##
