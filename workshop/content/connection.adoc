@@ -1,8 +1,8 @@
-:guid: %WORKSHOP_GUID%
-:targethost_fqdn: %WORKSHOP_TARGETHOST_FQDN%
-:ssh_command: %WORKSHOP_SSH_COMMAND%
-:ssh_password: %WORKSHOP_SSH_PASSWORD%
-:ssh_username: %WORKSHOP_USERNAME%
+:guid: %guid%
+:ssh_command: %ssh_command%
+:ssh_password: %ssh_password%
+:ssh_username: %ssh_username%%
+:targethost_fqdn: %targethost%
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
