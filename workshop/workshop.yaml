@@ -4,6 +4,7 @@ modules:
   activate:
     - overview
     - connection
+    - documentation/getting-started
     - documentation/webconsole
     - documentation/systemd
     - documentation/firewalld

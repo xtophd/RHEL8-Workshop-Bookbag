@@ -5,6 +5,9 @@ modules:
     exit_sign: Connection Information
   connection:
     name:      Connection Information
+    exit_sign: "Getting Started"
+  documentation/getting-started:
+    name:      "Getting Started"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name:      "Web Console (cockpit)"
