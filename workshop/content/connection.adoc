@@ -23,9 +23,16 @@ Your GUID is: *{guid}*
 
 Example of connecting via ssh
 
-[bash,options="nowrap",subs="{markup-in-source}"]
+[source,options="nowrap",subs="{markup-in-source}",role="execute"]
 ----
-$ *{ssh_command}*
+*{ssh_command}*
+----
+
+Send the password:
+
+[source,options="nowrap",subs="{markup-in-source}",role="execute"]
+----
+*{ssh_password}*
 ----
 
 == Web Console Information
