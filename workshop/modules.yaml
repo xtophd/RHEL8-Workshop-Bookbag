@@ -5,9 +5,9 @@ modules:
     exit_sign: Connection Information
   connection:
     name:      Connection Information
-    exit_sign: "Workshop Prep (DO THIS FIRST!)"
+    exit_sign: "Getting Started (DO THIS FIRST!)"
   documentation/getting-started:
-    name:      "Workshop Prep (DO THIS FIRST!)"
+    name:      "Getting Started (DO THIS FIRST!)"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name:      "Web Console (cockpit)"
