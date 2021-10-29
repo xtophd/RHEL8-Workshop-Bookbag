@@ -1,13 +1,10 @@
 ---
 modules:
-  overview:
+  documentation/getting-started-gpte:
+    name:      Workshop Setup
+    exit_sign: Workshop Overview
+  documentation/abstract-gpte:
     name:      Workshop Overview
-    exit_sign: Connection Information
-  connection:
-    name:      Connection Information
-    exit_sign: "Getting Started (DO THIS FIRST!)"
-  documentation/getting-started:
-    name:      "Getting Started (DO THIS FIRST!)"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name:      "Web Console (cockpit)"
