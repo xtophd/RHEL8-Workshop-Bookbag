@@ -2,7 +2,7 @@
 modules:
   overview:
     name:      Workshop Overview
-    exit_sign: Conneciton Information
+    exit_sign: Connection Information
   connection:
     name:      Connection Information
     exit_sign: "Getting Started (DO THIS FIRST!)"
