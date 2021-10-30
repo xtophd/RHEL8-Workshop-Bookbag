@@ -11,10 +11,6 @@
   * Eddie Chen
   * Gordon Keegan
   * Matt St. Onge
-  * Adam Pippert
-  * Javier Lopez Y Grueber
-  * Jim Wildman
-  * Joachim von Thadden
 
 == Overview
 

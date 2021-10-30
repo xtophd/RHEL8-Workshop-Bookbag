@@ -1,10 +1,10 @@
 ---
 modules:
   overview:
-    name:      Workshop Overview
-    exit_sign: Connection Information
+    name:      "Workshop Overview"
+    exit_sign: "Workshop Setup"
   connection:
-    name:      Connection Information
+    name:      "Workshop Setup"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name:      "Web Console (cockpit)"

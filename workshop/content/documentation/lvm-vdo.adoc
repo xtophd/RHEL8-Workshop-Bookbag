@@ -8,6 +8,20 @@ ifdef::env-github[]
 :caution-caption: :fire:
 :warning-caption: :warning:
 endif::[]
+:disk0: /dev/sda
+:disk1: /dev/sdb
+:disk2: /dev/sdc
+:disk3: /dev/sdd
+:disk4: /dev/sde
+:disk_glob: /dev/sd{b..e}
+ifeval::["%cloud_provider%" == "ec2"]
+:disk0: /dev/nvme0n1
+:disk1: /dev/nvme1n1
+:disk2: /dev/nvme2n1
+:disk3: /dev/nvme3n1
+:disk4: /dev/nvme4n1
+:disk_glob: /dev/nvme{1..4}n1
+endif::[]
 
 :toc:
 :toclevels: 1
@@ -26,7 +40,7 @@ These exercises will help you get familiar with the basic concepts of LVM and al
 
 For these exercises, you will be using the host `node3` as user `root`.
 
-From host `workstation`, ssh to `node3`.
+From host `bastion`, ssh to `node3`.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
@@ -44,7 +58,7 @@ Verify that you are on the right host for these exercises.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *cheat-vdo-checkhost.sh*
+# *workshop-vdo-checkhost.sh*
 ----
 
 You are now ready to proceed with these exercises.
@@ -131,7 +145,9 @@ multipath
 smartd
                  |
                  l| 
-mkfs mount
+mkfs
+mount
+fsadm
 |===
 
 
@@ -154,9 +170,9 @@ Since we will be reusing the same resources for many exercises, we will begin by
 
 # *vgremove -ff vg_lab*
 
-# *pvremove /dev/vd{b..e}*
+# *pvremove {disk_glob}*
 
-# *wipefs -a /dev/vd{b..e}*
+# *wipefs -a {disk_glob}*
 
 # *partprobe*
 ----
@@ -165,14 +181,14 @@ Since we will be reusing the same resources for many exercises, we will begin by
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *pvcreate /dev/vdb*
+# *pvcreate {disk1}*
 ----
 
 === Volume Group (Pool) Creation
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *vgcreate vg_lab /dev/vdb*
+# *vgcreate vg_lab {disk1}*
 ----
 
 === Logical Volume Creation
@@ -192,7 +208,7 @@ Since we will be reusing the same resources for many exercises, we will begin by
 # *mount /dev/vg_lab/lab1 /mnt/lab1*
 ----
 
-NOTE: If this were going to be a persistent filesystem, you would also need to add an entry to `etc/fstab`.
+NOTE: If this were going to be a persistent filesystem, you would also need to add an entry to `/etc/fstab`.
 
 === Examine Your Work
 
@@ -222,7 +238,7 @@ NOTE: If this were going to be a persistent filesystem, you would also need to a
 # *lvs -o lv_name,lv_size,lv_attr,segtype,devices vg_lab/lab1*
 
   LV   LSize  Attr       Type   Devices
-  lab1 <4.75g -wi-ao---- linear /dev/vdb(0)
+  lab1 <4.75g -wi-ao---- linear {disk1}(0)
 ----
 
 [bash,options="nowrap",subs="{markup-in-source}"]
@@ -230,7 +246,7 @@ NOTE: If this were going to be a persistent filesystem, you would also need to a
 # *lvs --units g -o +devices vg_lab/lab1*
 
   LV   VG     Attr       LSize Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert Devices
-  lab1 vg_lab -wi-ao---- 4.75g                                                     /dev/vdb(0)
+  lab1 vg_lab -wi-ao---- 4.75g                                                     {disk1}(0)
 ----
 
 [bash,options="nowrap",subs="{markup-in-source}"]
@@ -245,9 +261,9 @@ Filesystem              1K-blocks  Used Available Use% Mounted on
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *pvcreate /dev/vdc*
+# *pvcreate {disk2}*
 
-# *vgextend vg_lab /dev/vdc*
+# *vgextend vg_lab {disk2}*
 
 # *lvresize -l 95%VG /dev/vg_lab/lab1*
 
@@ -269,8 +285,8 @@ Let us take a look at the logical volume.  Notice a few things:
 # *lvs -o vg_name,vg_free,lv_name,lv_size,seg_size,segtype,devices vg_lab/lab1*
 
   VG     VFree   LV   LSize  SSize  Type   Devices
-  vg_lab 508.00m lab1 <9.50g <5.00g linear /dev/vdb(0)
-  vg_lab 508.00m lab1 <9.50g  4.50g linear /dev/vdc(0)
+  vg_lab 508.00m lab1 <9.50g <5.00g linear {disk1}(0)
+  vg_lab 508.00m lab1 <9.50g  4.50g linear {disk2}(0)
 ----
 
 [bash,options="nowrap",subs="{markup-in-source}"]
@@ -305,9 +321,9 @@ Since we will be reusing the same resources for many exercises, we will begin by
 
 # *vgremove -ff vg_lab*
 
-# *pvremove /dev/vd{b..e}*
+# *pvremove {disk_glob}*
 
-# *wipefs -a /dev/vd{b..e}*
+# *wipefs -a {disk_glob}*
 
 # *partprobe*
 ----
@@ -316,19 +332,14 @@ Since we will be reusing the same resources for many exercises, we will begin by
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *pvcreate /dev/vd{b..e}*
- 
-Physical volume "/dev/vdb" successfully created.
-Physical volume "/dev/vdc" successfully created.
-Physical volume "/dev/vdd" successfully created.
-Physical volume "/dev/vde" successfully created.
+# *pvcreate {disk_glob}*
 ----
 
 === Volume Group Creation
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *vgcreate vg_lab /dev/vd{b..e}*
+# *vgcreate vg_lab {disk_glob}*
 
 Volume group "vg_lab" successfully created
 ----
@@ -390,7 +401,7 @@ Let us now check some statistics.
 # *vdostats --human-readable*
 ----
 
-So in summary, we built a 30GB filesystem that only has 10GB of actual physical disk capacity.  We then copied 10GB of data into the filesystem, but after deduplication `vdostats --human-readbale` should reflect something near 4GB of available plysical space.
+So in summary, we built a 30GB filesystem that only has 10GB of actual physical disk capacity.  We then copied 10GB of data into the filesystem, but after deduplication `vdostats --human-readable` should reflect something near 4GB of available plysical space.
 
 A few additional high-level things to know about VDO.  
 

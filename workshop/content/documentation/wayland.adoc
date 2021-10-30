@@ -41,11 +41,11 @@ That said, Wayland also enables features that are hard or impossible to support 
 
 Wayland was born and raised in the X community, and has strong support.
 
-First introduced to the Fedora community back in version 25, Wayland has been under developemnt for several years before it's introduction in RHEL 8.   Wayland is the new standard in graphical desktop environments. 
+First introduced to the Fedora community back in version 25, Wayland has been under development for several years before it's introduction in RHEL 8.   Wayland is the new standard in graphical desktop environments. 
 
 For more information, see the resources listed below.
 
-NOTE:  X11 is still shipped with RHEL 8, but requires manual installation as it is not the default installed compsitor protocol
+NOTE:  X11 is still shipped with RHEL 8, but requires manual installation as it is not the default installed compositor protocol
 
 == Installation & Configuration
 
@@ -67,7 +67,7 @@ reboot
 ----
 ====
 
-Please proceed to log into the GUI console of *workstation.example.com* as the user *student*.  The password should be provided by your instructor.
+Please proceed to log into the GUI console of *bastion.example.com* as the user *student*.  The password should be provided by your instructor.
 
 == Customizing the Desktop
 

@@ -30,7 +30,7 @@ Features of firewalld include:
 
 For these exercises, you will be using the host `node1` as user `root`.
 
-From host `workstation`, ssh to `node1`.
+From host `bastion`, ssh to `node1`.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
@@ -48,7 +48,7 @@ Verify that you are on the right host for these exercises.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *cheat-firewalld-checkhost.sh*
+# *workshop-firewalld-checkhost.sh*
 ----
 
 You are now ready to proceed with these exercises.
@@ -82,7 +82,7 @@ The configuration files are stored in
   
 Red Hat distributes the default service configurations in /usr/lib/firewalld.  These configurations are NOT meant for customization.  They WILL be overwritten and replaced from time to time as Red Hat releases new packages or updates for the operating system.
 
-Customizations for the firewall configuration belong in */etc/filrewalld*.  These configuration files (if they exist) take precedence over the default configs located in */usr/lib/firewalld*.
+Customizations for the firewall configuration belong in */etc/firewalld*.  These configuration files (if they exist) take precedence over the default configs located in */usr/lib/firewalld*.
 
 === Zone Configs
 
@@ -463,7 +463,7 @@ public
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *cheat-firewalld-customconfigs.sh*
+# *workshop-firewalld-customconfigs.sh*
 
 Creating custom firewalld config file for http...
 Creating custom firewalld config file for https...

@@ -29,7 +29,7 @@ NOTE: For 99% of all use cases the firewalld tools are the best choice.  For thi
 
 For these exercises, you will be using the host `node2` as user `root`.
 
-From host `workstation`, ssh to `node2`.
+From host `bastion`, ssh to `node2`.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
@@ -47,7 +47,7 @@ Verify that you are on the right host for these exercises.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *cheat-nftables-checkhost.sh*
+# *workshop-nftables-checkhost.sh*
 ----
 
 You are now ready to proceed with these exercises.
@@ -110,7 +110,7 @@ Verify the rule change.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
@@ -141,7 +141,7 @@ Verify the rule change.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
@@ -170,7 +170,7 @@ Verify the new rules.
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
@@ -203,7 +203,7 @@ Verify Increased Security
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
@@ -234,7 +234,7 @@ Now find the handle and remove the rule currently allowing access for SSH, HTTP,
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
@@ -265,7 +265,7 @@ Verify that everything is back to normal
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 ----
-# *nft list table ip filter -n -a*
+# *nft -n -a list table ip filter*
 
 table ip filter { # handle 1
         chain INPUT { # handle 1
