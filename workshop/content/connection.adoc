@@ -21,11 +21,13 @@ Your GUID is: *{guid}*
 
   * Password is: *{ssh_password}*
 
-Example of connecting via ssh
+== Workshop Setup
+
+connect to bastion host via ssh
 
 [source,options="nowrap",subs="{markup-in-source}",role="execute"]
 ----
-*{ssh_command}*
+*{ssh_command} -o "StrictHostKeyChecking no"*
 ----
 
 Send the password:
@@ -33,6 +35,20 @@ Send the password:
 [source,options="nowrap",subs="{markup-in-source}",role="execute"]
 ----
 *{ssh_password}*
+----
+
+Use sudo to escalate your user priviledges:
+
+[source,options="nowrap",subs="{markup-in-source}",role="execute"]
+----
+*sudi -i*
+----
+
+Execute the workshop setup script:
+
+[source,options="nowrap",subs="{markup-in-source}",role="execute"]
+----
+*cd ~/RHEL8-Workshop; ./rhel8-workshop.sh all*
 ----
 
 == Environment Description
