@@ -1,10 +1,10 @@
 ---
 modules:
   overview:
-    name:      "Workshop Overview"
-    exit_sign: "Conneciton Information"
+    name:      Workshop Overview
+    exit_sign: Conneciton Information
   connection:
-    name:      "Connection Information"
+    name:      Connection Information
     exit_sign: "Getting Started (DO THIS FIRST!)"
   documentation/getting-started:
     name:      "Getting Started (DO THIS FIRST!)"
