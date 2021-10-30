@@ -1,10 +1,10 @@
 ---
 modules:
+  overview:
+    name:      "Workshop Overview"
+    exit_sign: "Workshop Setup"
   documentation/getting-started-gpte:
     name:      "Workshop Setup"
-    exit_sign: "Workshop Overview"
-  documentation/abstract-gpte:
-    name:      "Workshop Overview"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
     name:      "Web Console (cockpit)"
