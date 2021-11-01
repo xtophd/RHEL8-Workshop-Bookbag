@@ -41,7 +41,7 @@ Use sudo to escalate your user priviledges:
 
 [source,options="nowrap",subs="{markup-in-source}",role="execute"]
 ----
-*sudi -i*
+*sudo -i*
 ----
 
 Execute the workshop setup script:
