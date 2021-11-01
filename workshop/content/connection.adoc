@@ -37,6 +37,13 @@ Send the password:
 *{ssh_password}*
 ----
 
+launch 'tmux' (terminal multiplexer)
+
+[source,options="nowrap",subs="{markup-in-source}",role="execute"]
+----
+*tmux*
+----
+
 Use sudo to escalate your user priviledges:
 
 [source,options="nowrap",subs="{markup-in-source}",role="execute"]
