@@ -6,6 +6,10 @@
 :markup-in-source: verbatim,attributes,quotes
 :show_solution: true
 
+
+
+WARNING:  Executing these tasks is a requirement before proceeding with the workshop exercises.
+
 == General  Information
 
 [bash,options="nowrap",subs="{markup-in-source}"]
@@ -20,7 +24,7 @@
 
 == Workshop Setup
 
-These steps should be easy to click-through if you are using the bookbag terminal.  Executing these tasks is a requirement before proceeding with the workshop exercises.
+These steps should be easy to click-through if you are using the bookbag terminal. 
 
 Connect to target host (bastion) via ssh:
 
