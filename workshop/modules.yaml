@@ -1,9 +1,9 @@
 ---
 modules:
-  overview:
+  connection:
     name:      "Workshop Setup"
     exit_sign: "Workshop Overview"
-  connection:
+  overview:
     name:      "Workshop Overview"
     exit_sign: "Web Console (cockpit)"
   documentation/webconsole:
