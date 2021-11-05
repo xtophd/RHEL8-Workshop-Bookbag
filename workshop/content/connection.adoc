@@ -10,18 +10,6 @@
 
 WARNING:  Executing these tasks is a requirement before proceeding with the workshop exercises.
 
-== General  Information
-
-[bash,options="nowrap",subs="{markup-in-source}"]
-
-  * Unique session GUID: *{guid}*
-
-  * Target host FQDN: *{targethost_fqdn}*
-
-  * Username: *{ssh_username}*
-
-  * Password: *{ssh_password}*
-
 == Workshop Setup
 
 These steps should be easy to click-through if you are using the bookbag terminal. 
@@ -62,4 +50,28 @@ And finally, execute the workshop setup script:
 ----
 
 The setup will take about 8 minutes.  We will use this time to review RHEL 8 at a highlevel, talk about the workshop and help you get the most value out of your experience today.
+
+== General  Information
+
+[bash,options="nowrap",subs="{markup-in-source}"]
+
+  * Unique session GUID: *{guid}*
+
+  * Target host FQDN: *{targethost_fqdn}*
+
+  * Username: *{ssh_username}*
+
+  * Password: *{ssh_password}*
+
+For easy access, here is the ssh command (and password) you can copy to your paste buffer.
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*{ssh_command} -o "StrictHostKeyChecking no"*
+----
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*{ssh_password}*
+----
 
