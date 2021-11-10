@@ -8,7 +8,7 @@
 
 
 
-WARNING:  Executing these tasks is a requirement before proceeding with the workshop exercises.
+WARNING:  Executing these setup tasks is a requirement before proceeding with the workshop exercises.
 
 == Workshop Setup
 
@@ -51,7 +51,7 @@ And finally, execute the workshop setup script:
 
 The setup will take about 8 minutes.  We will use this time to review RHEL 8 at a highlevel, talk about the workshop and help you get the most value out of your experience today.
 
-== General  Information
+== Connection Information
 
 [bash,options="nowrap",subs="{markup-in-source}"]
 
