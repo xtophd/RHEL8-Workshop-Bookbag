@@ -29,9 +29,12 @@ modules:
     exit_sign: "Containers Dev (buildah)"
   documentation/buildah:
     name:      "Containers Dev (buildah)"
-    exit_sign: "Virtualization (image builder)"
+    exit_sign: "Image Builder (osbuild, composer-cli)"
+  documentation/image-builder:
+    name:      "Image Builder (osbuild, composer-cli)"
+    exit_sign: "Virtualization (kvm,libvirt)"
   documentation/virtualization:
-    name:      "Virtualization (image builder)"
+    name:      "Virtualization (kvm,libvirt)"
     exit_sign: "Session Logging (tlog)"
   documentation/tlog:
     name:      "Session Logging (tlog)"
