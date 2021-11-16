@@ -29,9 +29,9 @@ modules:
     exit_sign: "Containers Dev (buildah)"
   documentation/buildah:
     name:      "Containers Dev (buildah)"
-    exit_sign: "Image Builder (osbuild, composer-cli)"
+    exit_sign: "Image Builder (composer-cli)"
   documentation/image-builder:
-    name:      "Image Builder (osbuild, composer-cli)"
+    name:      "Image Builder (composer-cli)"
     exit_sign: "Virtualization (kvm,libvirt)"
   documentation/virtualization:
     name:      "Virtualization (kvm,libvirt)"
