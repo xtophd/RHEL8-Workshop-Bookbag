@@ -173,14 +173,21 @@ vmguest.qcow2
 
 == Customize your QCOW Image
 
-Now you need to set a root password in the image
+Now you need to do a few more things to your image:
+
+    * set a hostname
+    * set a root password
+    * copy a simple HTML file
+    * remove the cloud-init package
 
 [source,options="nowrap",subs="{markup-in-source}",role="copy"]
 ----
-*virt-customize -a /var/lib/libvirt/images/vmguest.qcow2 \
-                --hostname vmguest \
-                --root-password password:redhat \
-                --uninstall cloud-init*
+*virt-customize \
+    -a /var/lib/libvirt/images/vmguest.qcow2 \
+    --hostname vmguest \
+    --root-password password:redhat \
+    --copy-in /usr/local/etc/imagebuilder-index.html:/var/www/html \
+    --uninstall cloud-init*
 ----
 
 
@@ -214,7 +221,7 @@ To determine what IP address was assigned to the new host, we can using some opt
 
 The output will show us the clients MAC address and the IP address it was assigned via the libvirt integrated dnsmasq service.
 
-[source,options="nowrap"]
+[bash,options="nowrap"]
 ----
  Expiry Time           MAC address         Protocol   IP address          Hostname   Client ID or DUID
 -----------------------------------------------------------------------------------------------------------
@@ -228,7 +235,7 @@ Another mechanism determine the ip address of the client is to use the 'domifadd
 *virsh domifaddr vmguest*
 ----
 
-[source,options="nowrap"]
+[bash,options="nowrap"]
 ----
  Name       MAC address          Protocol     Address
 -------------------------------------------------------------------------------
@@ -239,7 +246,20 @@ If the above command results in empty data, it is just an indication that the vi
 not completed it's bootstrap.  Just give it a few more moments and try again.
 
 Once we can see the network information, now it is time to connect to the host so 
-and check out some it's characteristics.
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*export VM_IP=$(virsh domifaddr vmguest | sed -e '1,2d' -e '$d' | awk '{ split($4,a,/\//) ; print a[1] }')*
+----
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*curl $VM_IP*
+----
+
+== Virtual Machine Inspection
+
+Now it is time to connect to the host and check out some it's characteristics.
 
 [source,options="nowrap",subs="{markup-in-source}",role="copy"]
 ----
@@ -256,9 +276,26 @@ The password was set in the previous exercise with virt-customize command and is
 The virtual machine is on a private network and not accessbile from the internet.  You will only 
 be able to access it from the bastion via ssh, or from the webconsole.
 
-== Virtual Machine Inspection
+Verify that the httpd daemon is running.
 
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*systemctl status httpd*
+----
 
+Verifiy that the index.html is installed.
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*ls /var/www/html/index.html*
+----
+
+Exit back to the host
+
+[source,options="nowrap",subs="{markup-in-source}",role="copy"]
+----
+*exit*
+----
 
 == Additional CLI Commands
 
