@@ -178,6 +178,7 @@ Now you need to do a few more things to your image:
     * set a hostname
     * set a root password
     * copy a simple HTML file
+    * selinux relabel files in the guest
     * remove the cloud-init package
 
 [source,options="nowrap",subs="{markup-in-source}",role="copy"]
@@ -186,7 +187,8 @@ Now you need to do a few more things to your image:
     -a /var/lib/libvirt/images/vmguest.qcow2 \
     --hostname vmguest \
     --root-password password:redhat \
-    --copy-in /usr/local/etc/imagebuilder-index.html:/var/www/html \
+    --copy-in /usr/local/etc/index.html:/var/www/html \
+    --selinux-relabel \
     --uninstall cloud-init*
 ----
 
